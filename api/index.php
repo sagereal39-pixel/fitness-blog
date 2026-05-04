@@ -9,7 +9,7 @@ $postsTitle = 'Recent Posts';
 $topics = getAllTopics();
 
 
-require_once __DIR__ . '/../index.php';
+// require_once __DIR__ . '/../index.php';
 
 if (isset($_GET['t_id'])) {
   $posts = getPostsByTopicId($_GET['t_id']);

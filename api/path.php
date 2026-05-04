@@ -1,4 +1,6 @@
+<?php
 // Go up one level from /api to reach the project root
+
 define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';

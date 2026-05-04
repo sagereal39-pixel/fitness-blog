@@ -9,8 +9,8 @@ function dd($value)
 
 function executeQuery($sql, $data)
 {
-  global $conn;
-  $stmt = $conn->prepare($sql);
+  global $db;
+  $stmt = $db->prepare($sql);
   $values = array_values($data);
   $types = str_repeat('s', count($values));
   $stmt->bind_param($types, ...$values);
@@ -20,10 +20,10 @@ function executeQuery($sql, $data)
 
 function selectALL($table, $conditions = [])
 {
-  global $conn;
+  global $db;
   $sql = "SELECT * FROM $table";
   if (empty($conditions)) {
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->execute();
     $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     return $records;
@@ -45,7 +45,7 @@ function selectALL($table, $conditions = [])
 
 function selectOne($table, $conditions)
 {
-  global $conn;
+  global $db;
   $sql = "SELECT * FROM $table";
 
   $i = 0;
@@ -67,7 +67,7 @@ function selectOne($table, $conditions)
 
 function create($table, $data)
 {
-  global $conn;
+  global $db;
   // $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?"
   $sql = "INSERT INTO $table SET ";
 
@@ -87,7 +87,7 @@ function create($table, $data)
 
 function update($table, $id, $data)
 {
-  global $conn;
+  global $db;
   // $sql = "UPDATE INTO users SET username=?, admin=?, email=?, password=? WHERE id=?"
   $sql = "UPDATE $table SET ";
 
@@ -109,7 +109,7 @@ function update($table, $id, $data)
 
 function delete($table, $id)
 {
-  global $conn;
+  global $db;
   // $sql = "DELETE FROM users WHERE id=?"
   $sql = "DELETE FROM $table WHERE id=?";
 
@@ -119,7 +119,7 @@ function delete($table, $id)
 
 function getPublishedPosts()
 {
-  global $conn;
+  global $db;
   $sql = 'SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=?';
   $stmt = executeQuery($sql, ['published' => 1]);
   $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -128,7 +128,7 @@ function getPublishedPosts()
 
 function getPostsByTopicId($topic_id)
 {
-  global $conn;
+  global $db;
   $sql = 'SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND topic_id=?';
   $stmt = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
   $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -138,7 +138,7 @@ function getPostsByTopicId($topic_id)
 function searchPosts($term)
 {
   $match = '%' . $term . '%';
-  global $conn;
+  global $db;
   $sql = 'SELECT 
         p.*, u.username 
         FROM posts AS p 

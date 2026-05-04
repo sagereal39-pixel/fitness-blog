@@ -75,9 +75,9 @@ if (isset($_POST['update-topic'])) {
 
 function getTopicById($id)
 {
-  global $conn;
+  global $db;
   $sql = 'SELECT * FROM topics WHERE id = ?';
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $id);
   $stmt->execute();
 

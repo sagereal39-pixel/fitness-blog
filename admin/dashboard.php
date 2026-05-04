@@ -8,14 +8,14 @@ $totalComments = 0;
 $totalCommentLikes = 0;
 $engagementRows = [];
 
-if (isset($conn) && $conn instanceof mysqli) {
-  $commentsResult = $conn->query("SELECT COUNT(*) AS total_comments FROM comments");
+if (isset($db) && $db instanceof mysqli) {
+  $commentsResult = $db->query("SELECT COUNT(*) AS total_comments FROM comments");
   if ($commentsResult) {
     $row = $commentsResult->fetch_assoc();
     $totalComments = (int) ($row['total_comments'] ?? 0);
   }
 
-  $likesResult = $conn->query("SELECT COUNT(*) AS total_likes FROM comment_likes");
+  $likesResult = $db->query("SELECT COUNT(*) AS total_likes FROM comment_likes");
   if ($likesResult) {
     $row = $likesResult->fetch_assoc();
     $totalCommentLikes = (int) ($row['total_likes'] ?? 0);
@@ -35,7 +35,7 @@ if (isset($conn) && $conn instanceof mysqli) {
         LIMIT 10
     ";
 
-  $engagementResult = $conn->query($engagementSql);
+  $engagementResult = $db->query($engagementSql);
   if ($engagementResult) {
     while ($row = $engagementResult->fetch_assoc()) {
       $engagementRows[] = $row;

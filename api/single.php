@@ -18,9 +18,9 @@ $topics = selectALL('topics');
 if (isset($_GET['id'])) {
   $post_id = $_GET['id'];
   $sql = "UPDATE posts SET views = views + 1 WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   if ($stmt === false) {
-    die('SQL error:' . $conn->error);
+    die('SQL error:' . $db->error);
   }
   $stmt->bind_param("i", $post_id);
   $stmt->execute();

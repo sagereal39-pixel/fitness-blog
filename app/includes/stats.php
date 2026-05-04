@@ -3,32 +3,32 @@
 
 // Total Users
 $sqlUsers = "SELECT COUNT(*) AS total_users FROM users";
-$totalUsers = $conn->query($sqlUsers)->fetch_assoc()['total_users'];
+$totalUsers = $db->query($sqlUsers)->fetch_assoc()['total_users'];
 
 // Total Posts
 $sqlPosts = "SELECT COUNT(*) AS total_posts FROM posts";
-$totalPosts = $conn->query($sqlPosts)->fetch_assoc()['total_posts'];
+$totalPosts = $db->query($sqlPosts)->fetch_assoc()['total_posts'];
 
 // Published Posts
 $sqlPublished = "SELECT COUNT(*) AS published_posts FROM posts WHERE published = 1";
-$publishedPosts = $conn->query($sqlPublished)->fetch_assoc()['published_posts'];
+$publishedPosts = $db->query($sqlPublished)->fetch_assoc()['published_posts'];
 
 // Drafts/Unpublished Posts
 $sqlDrafts = "SELECT COUNT(*) AS drafts FROM posts WHERE published = 0";
-$drafts = $conn->query($sqlDrafts)->fetch_assoc()['drafts'];
+$drafts = $db->query($sqlDrafts)->fetch_assoc()['drafts'];
 
 // Total Views
 $sqlViews = "SELECT SUM(views) AS total_views FROM posts";
-$totalViews = $conn->query($sqlViews)->fetch_assoc()['total_views'];
+$totalViews = $db->query($sqlViews)->fetch_assoc()['total_views'];
 if (!$totalViews) $totalViews = 0;
 
 // Latest Users
 $sqlRecentUsers = "SELECT username, created_at FROM users ORDER BY created_at DESC LIMIT 5";
-$recentUsers = $conn->query($sqlRecentUsers);
+$recentUsers = $db->query($sqlRecentUsers);
 
 // Latest Posts
 $sqlRecentPosts = "SELECT title, created_at FROM posts ORDER BY created_at DESC LIMIT 5";
-$recentPosts = $conn->query($sqlRecentPosts);
+$recentPosts = $db->query($sqlRecentPosts);
 ?>
 
 

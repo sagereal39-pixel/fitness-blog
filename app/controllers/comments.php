@@ -6,10 +6,10 @@ $table = 'comments';
 // Fetch comments for a post
 function getCommentsByPostId($post_id)
 {
-  global $conn;
+  global $db;
 
   $sql = "SELECT * FROM comments WHERE post_id = ? ORDER BY created_at DESC";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $post_id);
   $stmt->execute();
 
@@ -37,7 +37,7 @@ if (isset($_POST['add-comment'])) {
   }
 
   $sql = "INSERT INTO comments (post_id, user_id, username, comment) VALUES (?, ?, ?, ?)";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("iiss", $post_id, $user_id, $username, $comment);
 
   if ($stmt->execute()) {
@@ -53,10 +53,10 @@ if (isset($_POST['add-comment'])) {
 // Count likes for a comment
 function getCommentLikesCount($comment_id)
 {
-  global $conn;
+  global $db;
 
   $sql = "SELECT COUNT(*) AS total_likes FROM comment_likes WHERE comment_id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $comment_id);
   $stmt->execute();
 
@@ -67,10 +67,10 @@ function getCommentLikesCount($comment_id)
 // Check if logged-in user already liked the comment
 function userLikedComment($comment_id, $user_id)
 {
-  global $conn;
+  global $db;
 
   $sql = "SELECT id FROM comment_likes WHERE comment_id = ? AND user_id = ? LIMIT 1";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("ii", $comment_id, $user_id);
   $stmt->execute();
 
@@ -92,7 +92,7 @@ if (isset($_POST['like-comment'])) {
 
   if (!userLikedComment($comment_id, $user_id)) {
     $sql = "INSERT INTO comment_likes (comment_id, user_id) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->bind_param("ii", $comment_id, $user_id);
     $stmt->execute();
   }
@@ -105,10 +105,10 @@ if (isset($_POST['like-comment'])) {
 // Count total comments for a post
 function getPostCommentsCount($post_id)
 {
-  global $conn;
+  global $db;
 
   $sql = "SELECT COUNT(*) AS total_comments FROM comments WHERE post_id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $post_id);
   $stmt->execute();
 
@@ -119,7 +119,7 @@ function getPostCommentsCount($post_id)
 // Count total likes for all comments under a post
 function getPostCommentLikesCount($post_id)
 {
-  global $conn;
+  global $db;
 
   $sql = "
         SELECT COUNT(comment_likes.id) AS total_likes
@@ -128,7 +128,7 @@ function getPostCommentLikesCount($post_id)
         WHERE comments.post_id = ?
     ";
 
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $post_id);
   $stmt->execute();
 
@@ -146,13 +146,13 @@ if (isset($_GET['delete_comment_id'])) {
 
   // delete likes first
   $sql = "DELETE FROM comment_likes WHERE comment_id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $comment_id);
   $stmt->execute();
 
   // delete comment
   $sql = "DELETE FROM comments WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $comment_id);
 
   if ($stmt->execute()) {

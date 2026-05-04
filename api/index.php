@@ -1,8 +1,11 @@
 <?php
 
+// Line 3 (if applicable)
 include('path.php');
-include(ROOT_PATH . "../app/controllers/topics.php");
-include(ROOT_PATH . "../app/includes/session.php");
+
+// Fix these paths to go UP one level
+include("../app/controllers/topics.php");
+include("../app/includes/session.php");
 
 $posts = array();
 $postsTitle = 'Recent Posts';

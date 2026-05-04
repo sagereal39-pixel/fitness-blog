@@ -1,14 +1,15 @@
-<?php
-// On Vercel, use the $_ENV superglobal for more reliable secret loading
-$host = $_ENV['DB_HOST'] ?? '127.0.0.1';
-$user = $_ENV['DB_USER'] ?? 'root';
-$pass = $_ENV['DB_PASS'] ?? '';
-$db_name = $_ENV['DB_NAME'] ?? 'blog';
-$port = $_ENV['DB_PORT'] ?? '3306';
+// Use $_SERVER for environment variables as it's often more stable on Vercel[cite: 3]
+$host = $_SERVER['DB_HOST'] ?? '127.0.0.1';
+$user = $_SERVER['DB_USER'] ?? 'root';
+$pass = $_SERVER['DB_PASS'] ?? '';
+$db_name = $_SERVER['DB_NAME'] ?? 'blog';
+$port = $_SERVER['DB_PORT'] ?? '3306';
 
-$db = new mysqli($host, $user, $pass, $db_name, $port);
+// Create connection
+$db = mysqli_init();
+// Set a timeout to prevent the "Blank Screen" hang[cite: 3]
+mysqli_options($db, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
 
-if ($db->connect_error) {
-  // This will force the error to show on the screen[cite: 1]
-  die("Live Connection Failed: " . $db->connect_error);
+if (!$db->real_connect($host, $user, $pass, $db_name, $port)) {
+die("Connection Failed: " . mysqli_connect_error());
 }

@@ -22,6 +22,9 @@ function executeQuery($sql, $data)
 function selectALL($table, $conditions = [])
 {
   global $db;
+  if (!$db) {
+    require_once __DIR__ . '/connect.php';
+  }
   $sql = "SELECT * FROM $table";
   if (empty($conditions)) {
     $stmt = $db->prepare($sql);

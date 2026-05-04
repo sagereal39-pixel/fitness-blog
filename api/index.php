@@ -51,7 +51,8 @@ if (isset($_GET['t_id'])) {
     rel="stylesheet" />
 
   <title>Fitness and Health</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Use BASE_URL so it always finds the root assets folder[cite: 2] -->
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css'; ?>" />
 </head>
 
 <body>
@@ -76,7 +77,7 @@ if (isset($_GET['t_id'])) {
         <?php foreach ($posts as $post): ?>
 
           <div class="post">
-            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="amad" class="slider-image" />
+            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
             <div class="post-info">
               <h4>
                 <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>
@@ -104,7 +105,7 @@ if (isset($_GET['t_id'])) {
           <?php foreach ($posts as $post): ?>
 
             <div class="post clearfix">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-image" />
+              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
               <div class="post-preview">
                 <h3>
                   <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>

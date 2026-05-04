@@ -1,13 +1,15 @@
 {
-  "functions": {
-    "**/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  },
-  "routes": [
+  "builds": [
     {
-      "src": "/(.*)",
-      "dest": "/index.php"
+      "src": "*.php",
+      "use": "vercel-php@0.6.0"
+    },
+    {
+      "src": "app/**/*.php",
+      "use": "vercel-php@0.6.0"
     }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.php" }
   ]
 }

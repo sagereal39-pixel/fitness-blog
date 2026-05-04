@@ -154,20 +154,20 @@ function searchPosts($term)
 
 // ...existing code...
 
-// function getAllTopics()
-// {
-//   global $conn;
-//   $sql = "SELECT * FROM topics";
-//   $result = $conn->query($sql);
-//   $topics = array();
+function getAllTopics()
+{
+  global $db;
+  $sql = "SELECT * FROM topics";
+  $result = $db->query($sql);
+  $topics = array();
 
-//   if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//       $topics[] = $row;
-//     }
-//   }
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $topics[] = $row;
+    }
+  }
 
-//   return $topics;
-// }
+  return $topics;
+}
 
 // ...existing code...

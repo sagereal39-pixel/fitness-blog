@@ -1,4 +1,5 @@
 <?php
+
 // This ensures PHP looks in the same directory as db.php for connect.php
 require_once __DIR__ . '/connect.php';
 

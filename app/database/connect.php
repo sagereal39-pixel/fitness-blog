@@ -1,3 +1,5 @@
+<?php
+
 // Use $_SERVER for environment variables as it's often more stable on Vercel[cite: 3]
 $host = $_SERVER['DB_HOST'] ?? '127.0.0.1';
 $user = $_SERVER['DB_USER'] ?? 'root';
@@ -11,5 +13,5 @@ $db = mysqli_init();
 mysqli_options($db, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
 
 if (!$db->real_connect($host, $user, $pass, $db_name, $port)) {
-die("Connection Failed: " . mysqli_connect_error());
+  die("Connection Failed: " . mysqli_connect_error());
 }

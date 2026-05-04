@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Instead of defining ROOT_PATH here, include the path file[cite: 2]
-require_once(__DIR__ . '/../app/includes/path.php');
+require_once(__DIR__ . '/path.php');
 
 // 2. Use that ROOT_PATH for all includes
 include(ROOT_PATH . "/app/controllers/topics.php");

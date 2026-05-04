@@ -1,8 +1,8 @@
 <?php
 
 include('path.php');
-include(ROOT_PATH . "/app/controllers/topics.php");
-include(ROOT_PATH . "/app/includes/session.php");
+include(ROOT_PATH . "../app/controllers/topics.php");
+include(ROOT_PATH . "../app/includes/session.php");
 
 $posts = array();
 $postsTitle = 'Recent Posts';

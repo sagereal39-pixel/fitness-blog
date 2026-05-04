@@ -1,9 +1,4 @@
 <?php
-include('../path.php');
-include(ROOT_PATH . '/app/database/db.php');
-include(ROOT_PATH . '/app/controllers/topics.php');
-include(ROOT_PATH . '/app/controllers/posts.php');
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -12,7 +7,7 @@ error_reporting(E_ALL);
 define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
 
 // 2. Use that ROOT_PATH for all includes
-
+include(ROOT_PATH . "/app/controllers/topics.php");
 include(ROOT_PATH . "/app/includes/session.php");
 
 $posts = array();

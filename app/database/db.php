@@ -156,9 +156,9 @@ function searchPosts($term)
 
 function getAllTopics()
 {
-  global $db;
+  global $conn;
   $sql = "SELECT * FROM topics";
-  $result = $db->query($sql);
+  $result = $conn->query($sql);
   $topics = array();
 
   if ($result->num_rows > 0) {

@@ -4,14 +4,11 @@ include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/comments.php");
 
 $comments = [];
+$post = [];
 
 if (isset($_GET['id'])) {
   $post = selectOne('posts', ['id' => $_GET['id']]);
   $comments = getCommentsByPostId($_GET['id']);
-}
-
-if (isset($_GET['id'])) {
-  $post = selectOne('posts', ['id' => $_GET['id']]);
 }
 
 $posts = selectALL('posts', ['published' => 1]);
@@ -118,7 +115,7 @@ if (isset($_GET['id'])) {
 
       <?php if (isset($_SESSION['id'])): ?>
         <form action="" method="POST" class="comment-form">
-          <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+          <input type="hidden" name="post_id" value="<?php echo $post['id'] ?? ''; ?>">
           <textarea name="comment" placeholder="Write your comment..." required></textarea>
           <button type="submit" name="add-comment">Post Comment</button>
         </form>

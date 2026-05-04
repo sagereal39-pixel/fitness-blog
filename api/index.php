@@ -6,6 +6,7 @@ include(ROOT_PATH . "/app/includes/session.php");
 
 $posts = array();
 $postsTitle = 'Recent Posts';
+$topics = getAllTopics();
 
 if (isset($_GET['t_id'])) {
   $posts = getPostsByTopicId($_GET['t_id']);

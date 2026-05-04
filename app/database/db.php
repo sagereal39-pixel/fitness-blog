@@ -151,3 +151,23 @@ function searchPosts($term)
   $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   return $records;
 }
+
+// ...existing code...
+
+function getAllTopics()
+{
+  global $db;
+  $sql = "SELECT * FROM topics";
+  $result = $db->query($sql);
+  $topics = array();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $topics[] = $row;
+    }
+  }
+
+  return $topics;
+}
+
+// ...existing code...

@@ -1,11 +1,11 @@
 <?php
 
-// Line 3 (if applicable)
-include('path.php');
+// 1. Get the path to the project root (one level up from this file)
+define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
 
-// Fix these paths to go UP one level
-include("../app/controllers/topics.php");
-include("../app/includes/session.php");
+// 2. Use that ROOT_PATH for all includes
+include(ROOT_PATH . "/app/controllers/topics.php");
+include(ROOT_PATH . "/app/includes/session.php");
 
 $posts = array();
 $postsTitle = 'Recent Posts';

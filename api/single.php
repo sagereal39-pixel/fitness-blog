@@ -1,4 +1,4 @@
-<?php include("path.php"); ?>
+<?php include(ROOT_PATH . "/path.php"); ?>
 <?php include(ROOT_PATH . '/app/controllers/posts.php');
 include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/comments.php");

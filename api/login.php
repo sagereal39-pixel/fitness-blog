@@ -27,7 +27,8 @@ guestsOnly();
     rel="stylesheet" />
 
   <title>Login</title>
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo time(); ?>" />
+  <!-- Add ?v=1 to the end of the URL to force a refresh[cite: 6] -->
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=1'; ?>" />
 </head>
 
 <body>

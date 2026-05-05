@@ -1,8 +1,8 @@
 <?php // This is the ONLY way to reliably find path.php from any file in the api/ folder[cite: 7]
-require_once(__DIR__ . '/path.php'); ?>
-<?php include(ROOT_PATH . '/app/controllers/posts.php');
+require_once(__DIR__ . '/path.php');
+include(ROOT_PATH . '/app/controllers/posts.php');
 include(ROOT_PATH . "/app/includes/session.php");
-include(ROOT_PATH . "/app/controllers/comments.php");
+// Use db.php so it finds the $db connection
 include(ROOT_PATH . "/app/database/db.php");
 
 global $db;
@@ -54,7 +54,8 @@ if (isset($_GET['id'])) {
     rel="stylesheet" />
 
   <title><?php echo $post['title']; ?> | Fitness And Health</title>
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo time(); ?>" />
+  <!-- Add ?v=1 to the end of the URL to force a refresh[cite: 6] -->
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=1'; ?>" />
 </head>
 
 <body>

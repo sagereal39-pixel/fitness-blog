@@ -35,12 +35,17 @@ if (isset($_POST['add-topic'])) {
 }
 
 
+// app/controllers/topics.php around line 38
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $topic = selectOne($table, ['id' => $id]);
-  $id = $topic['id'];
-  $name = $topic['name'];
-  $description = $topic['description'];
+
+  // Check if a topic was actually found before accessing it
+  if ($topic) {
+    $id = $topic['id'];
+    $name = $topic['name'];
+    $description = $topic['description'];
+  }
 }
 
 if (isset($_GET['del_id'])) {

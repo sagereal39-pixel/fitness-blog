@@ -3,7 +3,7 @@ require_once(__DIR__ . '/path.php'); ?>
 <?php include(ROOT_PATH . '/app/controllers/posts.php');
 include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/comments.php");
-include(ROOT_PATH . "/app/database/database.php");
+include(ROOT_PATH . "/app/database/db.php");
 
 global $db;
 
@@ -30,8 +30,8 @@ if (isset($_GET['id'])) {
   $stmt->execute();
 }
 
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +54,8 @@ if (isset($_GET['id'])) {
     rel="stylesheet" />
 
   <title><?php echo $post['title']; ?> | Fitness And Health</title>
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css'; ?>" />
+  <!-- This forces the browser to download the NEWEST version of your CSS -->
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=' . time(); ?>" />
 </head>
 
 <body>

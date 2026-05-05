@@ -52,7 +52,8 @@ if (isset($_GET['t_id'])) {
 
   <title>Fitness and Health</title>
   <!-- Use BASE_URL so it always finds the root assets folder[cite: 2] -->
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css'; ?>" />
+  <!-- This forces the browser to download the NEWEST version of your CSS -->
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=' . time(); ?>" />
 </head>
 
 <body>

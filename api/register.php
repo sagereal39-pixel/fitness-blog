@@ -27,7 +27,7 @@ guestsOnly();
     rel="stylesheet" />
 
   <title>Register</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css'; ?>" />
 </head>
 
 <body>

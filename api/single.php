@@ -2,6 +2,9 @@
 <?php include(ROOT_PATH . '/app/controllers/posts.php');
 include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/comments.php");
+include(ROOT_PATH . "/app/database/database.php");
+
+// $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 $comments = [];
 $post = [];
@@ -50,7 +53,7 @@ if (isset($_GET['id'])) {
     rel="stylesheet" />
 
   <title><?php echo $post['title']; ?> | Fitness And Health</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css'; ?>" />
 </head>
 
 <body>
@@ -82,7 +85,7 @@ if (isset($_GET['id'])) {
 
           <?php foreach ($posts as $p): ?>
             <div class="post clearfix">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" alt="" />
+              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
               <a href="#" class="title">
                 <h4><?php echo $p['title'] ?></h4>
               </a>

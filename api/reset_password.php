@@ -7,8 +7,7 @@ require_once(__DIR__ . '/path.php'); ?>
 <head>
   <meta charset="UTF-8">
   <title>Reset Password</title>
-  <!-- This forces the browser to download the NEWEST version of your CSS -->
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=' . time(); ?>" />
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo time(); ?>" />
 </head>
 
 <body>

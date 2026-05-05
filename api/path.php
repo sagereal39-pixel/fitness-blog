@@ -8,6 +8,6 @@ if ($host == 'localhost:5001') {
   // Local development remains http[cite: 5, 6]
   define("BASE_URL", "http://localhost:5001/blog");
 } else {
-  // Force HTTPS for Vercel to fix the Mixed Content error[cite: 6]
-  define("BASE_URL", "https://" . $host);
+  // Trim any trailing slashes to prevent double-slashes in links
+  define("BASE_URL", "https://" . rtrim($host, '/'));
 }

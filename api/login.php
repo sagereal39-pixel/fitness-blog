@@ -27,8 +27,7 @@ guestsOnly();
     rel="stylesheet" />
 
   <title>Login</title>
-  <!-- This forces the browser to download the NEWEST version of your CSS -->
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=' . time(); ?>" />
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo time(); ?>" />
 </head>
 
 <body>

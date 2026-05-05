@@ -1,10 +1,11 @@
-<?php include(ROOT_PATH . "/path.php"); ?>
+<?php // This is the ONLY way to reliably find path.php from any file in the api/ folder[cite: 7]
+require_once(__DIR__ . '/path.php'); ?>
 <?php include(ROOT_PATH . '/app/controllers/posts.php');
 include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/comments.php");
 include(ROOT_PATH . "/app/database/database.php");
 
-// $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+global $db;
 
 $comments = [];
 $post = [];

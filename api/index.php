@@ -103,11 +103,10 @@ if (isset($_GET['t_id'])) {
           <?php foreach ($posts as $post): ?>
 
             <div class="post clearfix">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
+              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="post-image" />
+
               <div class="post-preview">
-                <h3>
-                  <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>
-                </h3>
+                <h3><a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h3>
                 <i class="far fa-user"> <?php echo $post['username']; ?></i>
                 &nbsp;
                 <i class="far fa-calendar"> <?php echo date('F, j, Y', strtotime($post['created_at'])); ?></i>

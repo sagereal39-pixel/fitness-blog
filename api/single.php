@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
 
   <title><?php echo $post['title']; ?> | Fitness And Health</title>
   <!-- Add ?v=1 to the end of the URL to force a refresh[cite: 6] -->
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css' ?>" />
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=999'; ?>" />
 </head>
 
 <body>
@@ -87,14 +87,14 @@ if (isset($_GET['id'])) {
 
           <?php foreach ($posts as $p): ?>
             <div class="post clearfix">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
-              <a href="#" class="title">
+              <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" class="post-image" style="width:60px; height:60px; float:left; margin-right:10px;" />
+              <a href="single.php?id=<?php echo $p['id']; ?>" class="title">
                 <h4><?php echo $p['title'] ?></h4>
               </a>
             </div>
           <?php endforeach;  ?>
-
         </div>
+
         <div class="section topics">
           <h2 class="section-title">Topics</h2>
           <ul>

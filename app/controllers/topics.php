@@ -85,7 +85,9 @@ function getTopicById($id)
   $stmt = $db->prepare($sql);
   $stmt->bind_param("i", $id);
   $stmt->execute();
-
   $result = $stmt->get_result();
-  return $result->fetch_assoc();
+  $topic = $result->fetch_assoc();
+
+  // Return an empty array instead of null to prevent "array offset" errors
+  return $topic ? $topic : ['name' => 'Unknown Topic', 'id' => ''];
 }

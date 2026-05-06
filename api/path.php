@@ -7,6 +7,6 @@ $host = $_SERVER['HTTP_HOST'];
 if ($host == 'localhost:5001') {
   define("BASE_URL", "http://localhost:5001/blog");
 } else {
-  // Use https explicitly to stop the browser from blocking your styles[cite: 8]
+  // Use https explicitly for Vercel
   define("BASE_URL", "https://" . $host);
 }

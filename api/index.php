@@ -73,7 +73,9 @@ if (isset($_GET['t_id'])) {
         <?php foreach ($posts as $post): ?>
 
           <div class="post">
-            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
+            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>"
+              style="width: 100%; height: 200px; object-fit: cover;"
+              class="slider-image" />
             <div class="post-info">
               <h4>
                 <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>

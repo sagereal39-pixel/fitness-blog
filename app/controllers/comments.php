@@ -19,6 +19,8 @@ function getCommentsByPostId($post_id)
 
 // Add comment
 if (isset($_POST['add-comment'])) {
+  global $db;
+
   if (!isset($_SESSION['id'])) {
     $_SESSION['error'] = "Please login to comment.";
     header("Location: " . BASE_URL . "/login.php");
@@ -80,6 +82,8 @@ function userLikedComment($comment_id, $user_id)
 
 // Login to like comments
 if (isset($_POST['like-comment'])) {
+  global $db;
+
   if (!isset($_SESSION['id'])) {
     $_SESSION['error'] = "Please login to like comments.";
     header("Location: " . BASE_URL . "/login.php");
@@ -139,6 +143,8 @@ function getPostCommentLikesCount($post_id)
 
 // Delete comment and its likes
 if (isset($_GET['delete_comment_id'])) {
+  global $db;
+
   adminOnly();
 
   $comment_id = (int) $_GET['delete_comment_id'];

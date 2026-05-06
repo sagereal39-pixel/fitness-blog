@@ -1,10 +1,9 @@
 <?php // This is the ONLY way to reliably find path.php from any file in the api/ folder[cite: 7]
-require_once(__DIR__ . '/path.php');
-include(ROOT_PATH . '/app/controllers/posts.php');
-include(ROOT_PATH . "/app/includes/session.php");
-// Use db.php so it finds the $db connection
-include(ROOT_PATH . "/app/database/db.php");
-
+require_once(__DIR__ . '/path.php'); //
+require_once(ROOT_PATH . '/app/database/db.php'); //
+require_once(ROOT_PATH . '/app/controllers/posts.php');
+require_once(ROOT_PATH . "/app/includes/session.php");
+require_once(ROOT_PATH . "/app/controllers/comments.php");
 global $db;
 
 $comments = [];

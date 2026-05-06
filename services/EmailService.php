@@ -3,9 +3,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../app/includes/phpmailer/src/Exception.php';
-require_once __DIR__ . '/../app/includes/phpmailer/src/PHPMailer.php';
-require_once __DIR__ . '/../app/includes/phpmailer/src/SMTP.php';
+// Go up one level to root, then down into app
+require_once dirname(__DIR__) . '/app/includes/phpmailer/src/Exception.php';
+require_once dirname(__DIR__) . '/app/includes/phpmailer/src/PHPMailer.php';
+require_once dirname(__DIR__) . '/app/includes/phpmailer/src/SMTP.php';
 
 class EmailService
 {

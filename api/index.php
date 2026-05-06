@@ -10,6 +10,9 @@ $posts = array();
 $postsTitle = 'Recent Posts';
 $topics = getAllTopics();
 
+// api/index.php
+$posts = getPublishedPosts(); // This will now be sorted correctly
+$trendingPosts = array_slice($posts, 0, 3); // Take the top 3 newest for the slider
 
 // require_once __DIR__ . '/../index.php';
 
@@ -70,12 +73,10 @@ if (isset($_GET['t_id'])) {
 
       <div class="post-wrapper">
 
-        <?php foreach ($posts as $post): ?>
+        <?php foreach ($trendingPosts as $post): ?>
 
           <div class="post">
-            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>"
-              style="width: 100%; height: 200px; object-fit: cover;"
-              class="slider-image" />
+            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" />
             <div class="post-info">
               <h4>
                 <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>

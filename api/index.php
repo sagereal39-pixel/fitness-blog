@@ -48,7 +48,7 @@ if (isset($_GET['t_id'])) {
     rel="stylesheet" />
 
   <title>Fitness and Health</title>
-  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css' ?>" />
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css?v=999'; ?>" />
 </head>
 
 <body>

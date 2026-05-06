@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Go up one level to root, then down into app
+// Use ROOT_PATH to be 100% sure we find the files
 require_once dirname(__DIR__) . '/app/includes/phpmailer/src/Exception.php';
 require_once dirname(__DIR__) . '/app/includes/phpmailer/src/PHPMailer.php';
 require_once dirname(__DIR__) . '/app/includes/phpmailer/src/SMTP.php';

@@ -9,12 +9,6 @@ if (!function_exists('dd')) {
   }
 }
 
-function dd($value)
-{
-  echo "<pre>", print_r($value, true), "</pre>";
-  die();
-}
-
 function executeQuery($sql, $data)
 {
   global $db;

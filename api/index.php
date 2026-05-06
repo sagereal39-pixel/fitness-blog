@@ -10,10 +10,6 @@ $posts = array();
 $postsTitle = 'Recent Posts';
 $topics = getAllTopics();
 
-  // api/index.php
-  $posts = getPublishedPosts(); // This will now be sorted correctly
-  
-
   // require_once __DIR__ . '/../index.php';
 
   if (isset($_GET['t_id'])) {

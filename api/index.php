@@ -51,7 +51,7 @@ if (isset($_GET['t_id'])) {
     rel="stylesheet" />
 
   <title>Fitness and Health</title>
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css?v=<?php echo time(); ?>" />
+  <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/css/style.css' ?>" />
 </head>
 
 <body>
@@ -150,31 +150,32 @@ if (isset($_GET['t_id'])) {
       <!-- // Content -->
 
     </div>
-    <!-- // Page Wrapper -->
+  </div>
+  <!-- // Page Wrapper -->
 
-    <!-- TODO: INCLUDE FOOTER HERE -->
+  <!-- TODO: INCLUDE FOOTER HERE -->
 
-    <?php include(ROOT_PATH . '/app/includes/footer.php'); ?>
+  <?php include(ROOT_PATH . '/app/includes/footer.php'); ?>
 
-    <?php if (isset($_GET['success'])): ?>
-      <p style="color:green;">Message sent successfully ✅</p>
-    <?php endif; ?>
+  <?php if (isset($_GET['success'])): ?>
+    <p style="color:green;">Message sent successfully ✅</p>
+  <?php endif; ?>
 
 
-    <!-- JQuery -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
+  <!-- JQuery -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
 
-    <!-- Slick Carousel -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <!-- Slick Carousel -->
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <!-- Custom Script -->
-    <script src="assets/js/scripts.js"></script>
+  <!-- Custom Script -->
+  <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>

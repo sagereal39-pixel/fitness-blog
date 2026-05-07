@@ -1,4 +1,3 @@
 .env
-/app/includes/phpmailer/
 /node_modules/
 .vscode/

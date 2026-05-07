@@ -23,7 +23,6 @@ if (!function_exists('executeQuery')) {
 }
 
 if (!function_exists('selectAll')) {
-  # code...
   function selectALL($table, $conditions = [])
   {
     global $db;
@@ -53,109 +52,115 @@ if (!function_exists('selectAll')) {
   }
 }
 
+if (!function_exists('selectOne')) {
+  function selectOne($table, $conditions)
+  {
+    global $db;
+    $sql = "SELECT * FROM $table";
 
-function selectOne($table, $conditions)
-{
-  global $db;
-  $sql = "SELECT * FROM $table";
-
-  $i = 0;
-  foreach ($conditions as $key => $value) {
-    if ($i === 0) {
-      $sql = $sql . " WHERE $key=?";
-    } else {
-      $sql = $sql . " AND $key=?";
+    $i = 0;
+    foreach ($conditions as $key => $value) {
+      if ($i === 0) {
+        $sql = $sql . " WHERE $key=?";
+      } else {
+        $sql = $sql . " AND $key=?";
+      }
+      $i++;
     }
-    $i++;
+
+    $sql = $sql . " LIMIT 1";
+
+    $stmt = executeQuery($sql, $conditions);
+    $records = $stmt->get_result()->fetch_assoc();
+    return $records;
   }
-
-  $sql = $sql . " LIMIT 1";
-
-  $stmt = executeQuery($sql, $conditions);
-  $records = $stmt->get_result()->fetch_assoc();
-  return $records;
 }
 
-function create($table, $data)
-{
-  global $db;
-  // $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?"
-  $sql = "INSERT INTO $table SET ";
+if (!function_exists('create')) {
+  function create($table, $data)
+  {
+    // $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?"
+    $sql = "INSERT INTO $table SET ";
 
-  $i = 0;
-  foreach ($data as $key => $value) {
-    if ($i === 0) {
-      $sql = $sql . " $key=?";
-    } else {
-      $sql = $sql . ", $key=?";
+    $i = 0;
+    foreach ($data as $key => $value) {
+      if ($i === 0) {
+        $sql = $sql . " $key=?";
+      } else {
+        $sql = $sql . ", $key=?";
+      }
+      $i++;
     }
-    $i++;
+    $stmt = executeQuery($sql, $data);
+    $id = $stmt->insert_id;
+    return $id;
   }
-  $stmt = executeQuery($sql, $data);
-  $id = $stmt->insert_id;
-  return $id;
 }
 
-function update($table, $id, $data)
-{
-  global $db;
-  // $sql = "UPDATE INTO users SET username=?, admin=?, email=?, password=? WHERE id=?"
-  $sql = "UPDATE $table SET ";
+if (!function_exists('update')) {
+  function update($table, $id, $data)
+  {
+    // $sql = "UPDATE INTO users SET username=?, admin=?, email=?, password=? WHERE id=?"
+    $sql = "UPDATE $table SET ";
 
-  $i = 0;
-  foreach ($data as $key => $value) {
-    if ($i === 0) {
-      $sql = $sql . " $key=?";
-    } else {
-      $sql = $sql . ", $key=?";
+    $i = 0;
+    foreach ($data as $key => $value) {
+      if ($i === 0) {
+        $sql = $sql . " $key=?";
+      } else {
+        $sql = $sql . ", $key=?";
+      }
+      $i++;
     }
-    $i++;
+
+    $sql = $sql . " WHERE id=?";
+    $data['id'] = $id;
+    $stmt = executeQuery($sql, $data);
+    return $stmt->affected_rows;
   }
-
-  $sql = $sql . " WHERE id=?";
-  $data['id'] = $id;
-  $stmt = executeQuery($sql, $data);
-  return $stmt->affected_rows;
 }
 
-function delete($table, $id)
-{
-  global $db;
-  // $sql = "DELETE FROM users WHERE id=?"
-  $sql = "DELETE FROM $table WHERE id=?";
+if (!function_exists('delete')) {
+  function delete($table, $id)
+  {
+    // $sql = "DELETE FROM users WHERE id=?"
+    $sql = "DELETE FROM $table WHERE id=?";
 
-  $stmt = executeQuery($sql, ['id' => $id]);
-  return $stmt->affected_rows;
+    $stmt = executeQuery($sql, ['id' => $id]);
+    return $stmt->affected_rows;
+  }
 }
 
-function getPublishedPosts()
-{
-  global $db;
-  // Added 'ORDER BY created_at DESC' to put newest posts at the top
-  $sql = "SELECT p.*, u.username FROM posts AS p 
+if (!function_exists('getPublishedPosts')) {
+  function getPublishedPosts()
+  {
+    // Added 'ORDER BY created_at DESC' to put newest posts at the top
+    $sql = "SELECT p.*, u.username FROM posts AS p 
             JOIN users AS u ON p.user_id=u.id 
             WHERE p.published=? 
             ORDER BY p.created_at DESC";
 
-  $stmt = executeQuery($sql, ['published' => 1]);
-  $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-  return $records;
+    $stmt = executeQuery($sql, ['published' => 1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+  }
 }
 
-function getPostsByTopicId($topic_id)
-{
-  global $db;
-  $sql = 'SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND topic_id=?';
-  $stmt = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
-  $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-  return $records;
+if (!function_exists('getPostsByTopicId')) {
+  function getPostsByTopicId($topic_id)
+  {
+    $sql = 'SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND topic_id=?';
+    $stmt = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+  }
 }
 
-function searchPosts($term)
-{
-  $match = '%' . $term . '%';
-  global $db;
-  $sql = 'SELECT 
+if (!function_exists('searchPosts')) {
+  function searchPosts($term)
+  {
+    $match = '%' . $term . '%';
+    $sql = 'SELECT 
         p.*, u.username 
         FROM posts AS p 
         JOIN users AS u 
@@ -163,27 +168,27 @@ function searchPosts($term)
         WHERE p.published=?
         AND p.title LIKE ? OR p.body LIKE ?';
 
-  $stmt = executeQuery($sql, ['published' => 1, 'title' => $match, 'body' => $match]);
-  $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-  return $records;
-}
-
-// ...existing code...
-
-function getAllTopics()
-{
-  global $db;
-  $sql = "SELECT * FROM topics";
-  $result = $db->query($sql);
-  $topics = array();
-
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $topics[] = $row;
-    }
+    $stmt = executeQuery($sql, ['published' => 1, 'title' => $match, 'body' => $match]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
   }
-
-  return $topics;
 }
 
+if (!function_exists('getAllTopics')) {
+  function getAllTopics()
+  {
+    global $db;
+    $sql = "SELECT * FROM topics";
+    $result = $db->query($sql);
+    $topics = array();
+
+    if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        $topics[] = $row;
+      }
+    }
+
+    return $topics;
+  }
+}
 // ...existing code...

@@ -7,10 +7,9 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/login", "dest": "/api/login.php" },
     { "src": "/login.php", "dest": "/api/login.php" },
-    { "src": "/register.php", "dest": "/api/register.php" },
     { "src": "/single.php", "dest": "/api/single.php" },
-    { "src": "/logout.php", "dest": "/api/logout.php" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

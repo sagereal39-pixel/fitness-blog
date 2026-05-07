@@ -1,12 +1,12 @@
 <?php
 
-// services/EmailService.php
-require_once dirname(__DIR__) . '/api/path.php'; // Defines ROOT_PATH
+// Go up one level to reach the root, then into app/includes
+$path_to_mailer = dirname(__DIR__) . '/app/includes/phpmailer/src/';
 
-// Explicitly join ROOT_PATH with the subfolders
-require_once ROOT_PATH . '/app/includes/phpmailer/src/Exception.php';
-require_once ROOT_PATH . '/app/includes/phpmailer/src/PHPMailer.php';
-require_once ROOT_PATH . '/app/includes/phpmailer/src/SMTP.php';
+// Use the variable to be 100% certain of the path
+require_once $path_to_mailer . 'Exception.php';
+require_once $path_to_mailer . 'PHPMailer.php';
+require_once $path_to_mailer . 'SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

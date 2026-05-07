@@ -12,7 +12,6 @@ mysqli_options($db, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
 
 // Explicitly pass the port as an integer
 if (!$db->real_connect($host, $user, $pass, $db_name, (int)$port)) {
+  $db->set_charset("utf8mb4");
   die("Connection Failed: " . mysqli_connect_error());
 }
-
-$db->set_charset("utf8mb4");

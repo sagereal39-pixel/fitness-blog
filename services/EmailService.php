@@ -1,7 +1,9 @@
 <?php
 
-require_once dirname(__DIR__) . '/api/path.php'; // Get ROOT_PATH
+// services/EmailService.php
+require_once dirname(__DIR__) . '/api/path.php'; // Defines ROOT_PATH
 
+// Explicitly join ROOT_PATH with the subfolders
 require_once ROOT_PATH . '/app/includes/phpmailer/src/Exception.php';
 require_once ROOT_PATH . '/app/includes/phpmailer/src/PHPMailer.php';
 require_once ROOT_PATH . '/app/includes/phpmailer/src/SMTP.php';

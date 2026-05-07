@@ -1,6 +1,9 @@
-<?php include("../../path.php"); ?>
+<?php include("../blog/api/path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/topics.php");
 adminOnly();
+
+// Extract id from GET or POST parameter
+$id = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : (isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +29,10 @@ adminOnly();
   <title>Admin Section - Edit Topics</title>
 
   <!-- Custom Styling -->
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <!-- Admin Styling -->
-  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <link rel="stylesheet" href="/assets/css/admin.css" />
 </head>
 
 <body>

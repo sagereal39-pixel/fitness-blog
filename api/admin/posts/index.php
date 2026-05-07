@@ -1,7 +1,8 @@
-<?php include("../../path.php"); ?>
+<?php include("../blog/api/path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/posts.php");
 include(ROOT_PATH . "/app/controllers/comments.php");
 adminOnly();
+$posts = isset($posts) ? $posts : [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +28,10 @@ adminOnly();
   <title>Admin Section - Manage Posts</title>
 
   <!-- Custom Styling -->
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <!-- Admin Styling -->
-  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <link rel="stylesheet" href="/assets/css/admin.css" />
 </head>
 
 <body>

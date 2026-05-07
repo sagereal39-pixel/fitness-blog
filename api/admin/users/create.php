@@ -1,4 +1,4 @@
-<?php include("../../path.php"); ?>
+<?php include("../blog/api/path.php"); ?>
 <?php include(ROOT_PATH . '/app/controllers/users.php');
 adminOnly();
 ?>
@@ -26,10 +26,10 @@ adminOnly();
   <title>Admin Section - Add Users</title>
 
   <!-- Custom Styling -->
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <!-- Admin Styling -->
-  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <link rel="stylesheet" href="/assets/css/admin.css" />
 </head>
 
 <body>

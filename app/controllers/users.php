@@ -219,3 +219,11 @@ if (isset($_GET['delete_id'])) {
   header('location: ' . BASE_URL . '/admin/users/index.php');
   exit();
 }
+
+function getAdminUsers()
+{
+  global $db;
+  $sql = "SELECT * FROM users WHERE role = 'admin'";
+  $result = mysqli_query($db, $sql);
+  return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}

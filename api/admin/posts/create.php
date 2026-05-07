@@ -1,6 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php include("../blog/api/path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/posts.php");
 adminOnly();
+$topics = getTopics();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +30,10 @@ adminOnly();
   <title>Admin Section - Add Posts</title>
 
   <!-- Custom Styling -->
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <!-- Admin Styling -->
-  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <link rel="stylesheet" href="/assets/css/admin.css" />
 </head>
 
 <body>
@@ -91,11 +92,11 @@ adminOnly();
         <form action="create.php" method="post" enctype="multipart/form-data">
           <div>
             <label>Title</label>
-            <input type="text" name="title" value="<?php echo $title ?>" class="text-input" />
+            <input type="text" name="title" value="<?php echo isset($title) ? $title : '' ?>" class="text-input" />
           </div>
           <div>
             <label>Body</label>
-            <textarea name="body" value="<?php echo $body ?>" id="body"></textarea>
+            <textarea name="body" id="body"><?php echo isset($body) ? $body : '' ?></textarea>
           </div>
           <div>
             <label>Image</label>

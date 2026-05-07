@@ -1,8 +1,7 @@
 {
   "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.7.1"
-    }
+    "api/*.php": { "runtime": "vercel-php@0.7.1" },
+    "admin/*.php": { "runtime": "vercel-php@0.7.1" }
   },
   "routes": [
     { "handle": "filesystem" },
@@ -10,6 +9,7 @@
     { "src": "/login", "dest": "/api/login.php" },
     { "src": "/login.php", "dest": "/api/login.php" },
     { "src": "/single.php", "dest": "/api/single.php" },
+    { "src": "/admin/(.*)", "dest": "/admin/$1" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

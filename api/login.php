@@ -38,7 +38,7 @@ guestsOnly();
 
   <div class="auth-content">
 
-    <form action="login.php" method="POST">
+    <form action="<?php echo BASE_URL . '/login.php'; ?>" method="POST">
       <h2 class="form-title">Login</h2>
 
       <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>

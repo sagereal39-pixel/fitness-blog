@@ -37,7 +37,7 @@ guestsOnly();
   <?php include(ROOT_PATH . '/app/includes/header.php') ?>
 
   <div class="auth-content">
-    <form action="register.php" method="POST">
+    <form action="<?php echo BASE_URL . '/register.php'; ?>" method="POST">
       <h2 class="form-title">Register</h2>
 
 

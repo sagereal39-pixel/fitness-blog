@@ -4,7 +4,6 @@ include(ROOT_PATH . "/app/database/db.php");
 include(ROOT_PATH . "/app/helpers/validateUser.php");
 include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/includes/session.php");
-include(ROOT_PATH . "/app/includes/session.php");
 
 require_once(ROOT_PATH . '/services/EmailService.php');
 

@@ -8,6 +8,8 @@
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/admin/(.*)", "dest": "/api/admin/$1" },
+    { "src": "/login.php", "dest": "/api/login.php" },
+    { "src": "/register.php", "dest": "/api/register.php" },
     { "src": "/login", "dest": "/api/login.php" },
     { "src": "/register", "dest": "/api/register.php" },
     { "src": "/single.php", "dest": "/api/single.php" },

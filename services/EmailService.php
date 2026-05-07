@@ -1,12 +1,15 @@
 <?php
 
+// Grab path.php first to get the ROOT_PATH constant
+require_once dirname(__DIR__) . '/api/path.php';
+
+// Use ROOT_PATH for absolute accuracy on Vercel
+require_once(ROOT_PATH . '/app/includes/phpmailer/src/Exception.php');
+require_once(ROOT_PATH . '/app/includes/phpmailer/src/PHPMailer.php');
+require_once(ROOT_PATH . '/app/includes/phpmailer/src/SMTP.php');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-// Use ROOT_PATH to be 100% sure we find the files
-require_once dirname(__DIR__) . '/app/includes/phpmailer/src/Exception.php';
-require_once dirname(__DIR__) . '/app/includes/phpmailer/src/PHPMailer.php';
-require_once dirname(__DIR__) . '/app/includes/phpmailer/src/SMTP.php';
 
 class EmailService
 {

@@ -9,44 +9,50 @@ if (!function_exists('dd')) {
   }
 }
 
-function executeQuery($sql, $data)
-{
-  global $db;
-  $stmt = $db->prepare($sql);
-  $values = array_values($data);
-  $types = str_repeat('s', count($values));
-  $stmt->bind_param($types, ...$values);
-  $stmt->execute();
-  return $stmt;
+if (!function_exists('executeQuery')) {
+  function executeQuery($sql, $data)
+  {
+    global $db;
+    $stmt = $db->prepare($sql);
+    $values = array_values($data);
+    $types = str_repeat('s', count($values));
+    $stmt->bind_param($types, ...$values);
+    $stmt->execute();
+    return $stmt;
+  }
 }
 
-function selectALL($table, $conditions = [])
-{
-  global $db;
-  if (!$db) {
-    require_once __DIR__ . '/connect.php';
-  }
-  $sql = "SELECT * FROM $table";
-  if (empty($conditions)) {
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $records;
-  } else {
-    $i = 0;
-    foreach ($conditions as $key => $value) {
-      if ($i === 0) {
-        $sql = $sql . " WHERE $key=?";
-      } else {
-        $sql = $sql . " AND $key=?";
-      }
-      $i++;
+if (!function_exists('selectAll')) {
+  # code...
+  function selectALL($table, $conditions = [])
+  {
+    global $db;
+    if (!$db) {
+      require_once __DIR__ . '/connect.php';
     }
-    $stmt = executeQuery($sql, $conditions);
-    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $records;
+    $sql = "SELECT * FROM $table";
+    if (empty($conditions)) {
+      $stmt = $db->prepare($sql);
+      $stmt->execute();
+      $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+      return $records;
+    } else {
+      $i = 0;
+      foreach ($conditions as $key => $value) {
+        if ($i === 0) {
+          $sql = $sql . " WHERE $key=?";
+        } else {
+          $sql = $sql . " AND $key=?";
+        }
+        $i++;
+      }
+      $stmt = executeQuery($sql, $conditions);
+      $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+      return $records;
+    }
   }
 }
+
 
 function selectOne($table, $conditions)
 {

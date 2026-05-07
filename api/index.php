@@ -10,9 +10,9 @@ $posts = array();
 $postsTitle = 'Recent Posts';
 $topics = getAllTopics();
 
-  // require_once __DIR__ . '/../index.php';
+// require_once __DIR__ . '/../index.php';
 
-  if (isset($_GET['t_id'])) {
+if (isset($_GET['t_id'])) {
   $posts = getPostsByTopicId($_GET['t_id']);
   $topic = getTopicById($_GET['t_id']);
   $postsTitle = "Posts under '" . $topic['name'] . "'";
@@ -64,27 +64,21 @@ $topics = getAllTopics();
 
     <div class="post-slider">
       <h1 class="slider-title">Trending Posts</h1>
-      <!-- <i class="fas fa-chevron-left prev"></i>
-      <i class="fas fa-chevron-right next"></i> -->
+      <i class="fas fa-chevron-left prev"></i>
+      <i class="fas fa-chevron-right next"></i>
 
       <div class="post-wrapper">
-
         <?php foreach ($posts as $post): ?>
-
           <div class="post">
-            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>"/>
+            <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" />
             <div class="post-info">
-              <h4>
-                <a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a>
-              </h4>
+              <h4><a href="single.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h4>
               <i class="far fa-user"> <?php echo $post['username']; ?></i>
               &nbsp;
               <i class="far fa-calendar"> <?php echo date('F, j, Y', strtotime($post['created_at'])); ?></i>
             </div>
           </div>
-
         <?php endforeach; ?>
-
       </div>
 
       <!-- // Post Slider -->

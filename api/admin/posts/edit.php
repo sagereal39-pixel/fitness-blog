@@ -1,4 +1,4 @@
-<?php include("../blog/api/path.php"); ?>
+<?php include(dirname(__DIR__, 2) . "/path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/posts.php");
 adminOnly();
 
@@ -6,6 +6,11 @@ $topics = selectAll('topics');
 
 if (isset($_GET['id'])) {
   $post = selectOne('posts', ['id' => $_GET['id']]);
+  $id = $post['id'];
+  $title = $post['title'];
+  $body = $post['body'];
+  $topic_id = $post['topic_id'];
+  $published = $post['published'];
 }
 
 if (isset($_POST['update-post'])) {

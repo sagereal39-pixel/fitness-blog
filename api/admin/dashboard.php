@@ -1,4 +1,4 @@
-<?php include("../blog/api/path.php"); ?>
+<?php include(dirname(__DIR__) . "/path.php"); ?>
 <?php
 include(ROOT_PATH . "/app/controllers/posts.php");
 adminOnly();

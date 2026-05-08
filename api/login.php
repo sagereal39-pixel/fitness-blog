@@ -1,6 +1,8 @@
 <?php // This is the ONLY way to reliably find path.php from any file in the api/ folder[cite: 7]
 require_once(__DIR__ . '/path.php'); ?>
-<?php include(ROOT_PATH . "/app/controllers/users.php");
+<?php
+
+include(ROOT_PATH . "/app/controllers/users.php");
 include(ROOT_PATH . "/app/includes/session.php");
 
 guestsOnly();

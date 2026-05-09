@@ -188,6 +188,7 @@ header ul li a:hover {
 
 .post-slider {
   position: relative;
+  padding: 0 50px; /* Create space for the buttons */
 }
 
 .post-slider .next {
@@ -208,6 +209,13 @@ header ul li a:hover {
   cursor: pointer;
 }
 
+.post-slider .next,
+.post-slider .prev {
+  top: 50%;
+  transform: translateY(-50%); /* Perfectly center them vertically */
+  z-index: 10;
+}
+
 .post-slider .post-wrapper {
   width: 84%;
   height: 350px;
@@ -220,11 +228,14 @@ header ul li a:hover {
   text-align: center;
   margin: 30px auto;
 }
+
 .post-slider .post-wrapper .post {
   background: #05f7ff;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 300px;
-  height: 330px;
+  height: auto;
+  min-height: 350px;
   margin: 0px 10px;
   background: white;
   border-radius: 5px;
@@ -241,6 +252,11 @@ header ul li a:hover {
   height: 200px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.post-slider .post-wrapper .post .post-info {
+  height: auto; /* Allow text to breathe */
+  padding: 10px;
 }
 
 /* // Post Slider */
@@ -562,7 +578,9 @@ header ul li a:hover {
 
 @media only screen and (max-width: 770px) {
   header {
+    height: auto; /* Change from 66px */
     position: relative;
+    z-index: 100;
   }
 
   .content .sidebar {
@@ -575,18 +593,24 @@ header ul li a:hover {
     background: #0e94a0;
     max-height: 0px;
     overflow: hidden;
+    display: block; /* Ensure it is block */
   }
+
   .showing {
     max-height: 100em;
   }
+
   header ul li {
     width: 100%;
+    float: none; /* Stop floating on mobile */
   }
+
   header ul li ul {
     position: static;
     display: block;
     width: 100%;
   }
+
   header ul li ul li a {
     padding: 10px;
     background: #0e94a0;
@@ -597,6 +621,7 @@ header ul li a:hover {
   header ul li ul li a.logout {
     color: red;
   }
+
   header .menu-toggle {
     display: block;
     position: absolute;
@@ -604,6 +629,7 @@ header ul li a:hover {
     top: 20px;
     font-size: 1.9em;
   }
+
   header .logo {
     margin-left: 0.5em;
   }

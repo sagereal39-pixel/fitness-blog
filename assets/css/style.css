@@ -649,49 +649,105 @@ header ul li a:hover {
 
 /* // MEDIA QUERIES 770px*/
 
-/* MEDIA QUERIES 600px*/
+/* ===========================
+   REFINED MEDIA QUERIES
+   =========================== */
 
-@media only screen and (max-width: 600px) {
-  .content .main-content .post .post-image {
+/* Tablet & Mobile (under 770px) */
+@media only screen and (max-width: 770px) {
+  header {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  header .logo {
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 0;
+  }
+
+  header .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+  }
+
+  header ul {
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    background: #0e94a0;
+  }
+
+  /* When JS adds the .showing class */
+  header ul.showing {
+    max-height: 300px;
+  }
+
+  header ul li {
     width: 100%;
   }
 
-  .content .main-content .post .post-preview {
+  header ul li a {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Slider Fixes */
+  .post-slider {
+    padding: 0 20px;
+  }
+
+  .post-slider .post-wrapper {
     width: 100%;
+    height: auto !important; /* Let content grow */
+    overflow: visible;
+  }
+
+  .post-slider .post-wrapper .post {
+    width: 100% !important; /* Take full width on small screens */
+    margin: 10px 0;
+  }
+
+  .post-slider .next,
+  .post-slider .prev {
+    display: none; /* Hide arrows on mobile to save space, use touch-swipe instead */
+  }
+
+  .content .main-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content .sidebar {
+    display: none; /* Hide sidebar on mobile to avoid clutter */
+  }
+}
+
+/* Very Small Mobile (under 600px) */
+@media only screen and (max-width: 600px) {
+  .auth-content {
+    width: 95%;
   }
 
   .content .main-content .post {
     height: auto;
   }
 
-  .content .main-content.single {
-    padding: 10px 20px;
-  }
-
-  .content .main-content .post .read-more {
-    position: static;
+  .content .main-content .post .post-image {
     width: 100%;
-    display: block;
-    text-align: center;
+    height: 200px;
   }
 
-  .post-slider .next {
-    right: 10px;
-  }
-
-  .post-slider .prev {
-    left: 10px;
-  }
-
-  .auth-content {
-    width: 90%;
-  }
-
-  .content .sidebar .section.popular {
-    margin-top: 20px;
+  .content .main-content .post .post-preview {
+    width: 100%;
+    padding: 20px;
   }
 }
-/* // MEDIA QUERIES 600px*/
 
 /* ===========================
    CKEditor Table Styling

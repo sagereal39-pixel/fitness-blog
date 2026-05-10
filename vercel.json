@@ -7,7 +7,6 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    /* Specific file routes must come BEFORE the catch-all */
     { "src": "/login", "dest": "/api/login.php" },
     { "src": "/login.php", "dest": "/api/login.php" },
     { "src": "/register", "dest": "/api/register.php" },
@@ -15,7 +14,6 @@
     { "src": "/single.php", "dest": "/api/single.php" },
     { "src": "/logout.php", "dest": "/api/logout.php" },
     { "src": "/admin/(.*)", "dest": "/api/admin/$1" },
-    /* This catch-all must be the absolute LAST entry */
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

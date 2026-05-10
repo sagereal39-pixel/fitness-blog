@@ -841,3 +841,17 @@ header ul li a:hover {
   color: #0ea5b7;
   font-weight: 600;
 }
+
+/* Fix for mobile slider visibility */
+@media only screen and (max-width: 770px) {
+  .post-slider .post-wrapper {
+    width: 95%; /* Give more room on mobile */
+    height: auto;
+    overflow: visible;
+  }
+
+  .post-slider .post-wrapper .post {
+    margin: 0 5px;
+    width: 280px !important; /* Force width for slick on mobile */
+  }
+}

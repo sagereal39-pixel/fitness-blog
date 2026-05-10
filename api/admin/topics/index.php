@@ -129,7 +129,7 @@ $topics = getTopics(); // Fetch topics from database
   crossorigin></script>
 
 <!-- Custom Script -->
-<script src="../../assets/js/scripts.js"></script>
+<script src="<?php echo BASE_URL . '/assets/js/scripts.js' ?>"></script>
 
 
 <!-- <script

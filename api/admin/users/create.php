@@ -141,7 +141,7 @@ adminOnly();
   src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js"
   crossorigin></script>
 <!-- Custom Script -->
-<script src="../../assets/js/scripts.js"></script>
+<script src="<?php echo BASE_URL . '/assets/js/scripts.js' ?>"></script>
 
 <!-- <script
         src="https://cdn.ckeditor.com/ckeditor5-premium-features/45.0.0/ckeditor5-premium-features.umd.js"

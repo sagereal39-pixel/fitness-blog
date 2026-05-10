@@ -319,8 +319,10 @@ header ul li a:hover {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  left: 10px; /* Spread it across the bottom as requested */
-  text-align: center;
+  border: 1px solid #006668;
+  background: transparent;
+  border-radius: 0px;
+  color: #005255 !important;
 }
 
 .content .main-content .post .read-more:hover {
@@ -645,6 +647,14 @@ header ul li a:hover {
 
   .content .sidebar .section.popular {
     margin-top: 20px;
+  }
+
+  .content .main-content .post .read-more {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: 10px; /* Spread it across the bottom as requested */
+    text-align: center;
   }
 }
 

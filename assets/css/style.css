@@ -332,7 +332,7 @@ header ul li a:hover {
 }
 
 .content .main-content .post .post-image {
-  width: 100%;
+  width: 50%;
   height: 200px;
   float: none;
 }

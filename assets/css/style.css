@@ -252,11 +252,22 @@ header ul li a:hover {
   height: 200px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  object-fit: cover; /* This crops the image to fill the space without stretching */
+  flex-shrink: 0;
 }
 
 .post-slider .post-wrapper .post .post-info {
-  height: auto; /* Allow text to breathe */
-  padding: 10px;
+  flex-grow: 1; /* Makes the info section expand to fill the card */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Keeps text at the top */
+}
+
+.post-slider .post-wrapper .post .post-info i,
+.post-slider .post-wrapper .post .post-info span {
+  font-size: 0.9em;
+  margin-top: auto; /* Pushes the author/date to the bottom of the card */
 }
 
 /* // Post Slider */
@@ -308,7 +319,7 @@ header ul li a:hover {
 
 .content .popular .post img {
   height: 60px;
-  width: 60px;
+  width: 40px;
   float: left;
   margin-right: 10px;
 }
@@ -732,9 +743,13 @@ header ul li a:hover {
   }
 
   .post-slider .post-wrapper .post {
-    display: inline-block !important;
+    display: flex !important; /* Force flexbox for internal alignment */
+    flex-direction: column;
+    height: 450px !important; /* Set a fixed height for all cards in the slider */
     margin: 0 10px;
-    height: 420px; /* Increased to prevent text bleeding */
+    background: white;
+    border-radius: 5px;
+    overflow: hidden; /* Clips any content that might leak out */
   }
 
   .post-slider .next,
@@ -754,7 +769,7 @@ header ul li a:hover {
   }
 
   .content .sidebar {
-    display: none; /* Hide sidebar on mobile to stop stretching */
+    display: block; /* Hide sidebar on mobile to stop stretching */
   }
 
   .footer {

@@ -287,16 +287,13 @@ header ul li a:hover {
 }
 
 .content .main-content .post {
+  display: flex !important;
+  flex-direction: row; /* Force side-by-side layout */
   width: 95%;
-  height: auto; /* Change from 270px to auto to stop bleeding */
-  min-height: 270px;
+  height: 270px; /* Restore standard height */
   margin: 20px auto;
-  padding-bottom: 50px; /* Space for the absolute button */
-  border-radius: 5px;
   background: white;
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Popular Posts */
@@ -332,15 +329,15 @@ header ul li a:hover {
 }
 
 .content .main-content .post .post-image {
-  width: 50%;
-  height: 200px;
-  float: none;
+  width: 40%;
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0; /* Prevents image from getting squished */
 }
 
 .content .main-content .post .post-preview {
-  width: 100%;
-  padding: 10px;
-  float: none;
+  width: 60%;
+  padding: 20px;
 }
 
 .content .sidebar {
@@ -727,18 +724,15 @@ header ul li a:hover {
 
   .post-slider .post-wrapper {
     display: block !important;
-    overflow: hidden;
-    height: auto !important;
+    height: 480px !important;
   }
 
   .post-slider .post-wrapper .post {
-    display: flex !important; /* Force flexbox for internal alignment */
-    flex-direction: column;
-    height: 450px !important; /* Set a fixed height for all cards in the slider */
+    display: flex !important;
+    flex-direction: column !important; /* Keep cards vertical */
+    height: 450px !important;
+    width: 280px !important;
     margin: 0 10px;
-    background: white;
-    border-radius: 5px;
-    overflow: hidden; /* Clips any content that might leak out */
   }
 
   /* 2. Force all slider images to be the same size and crop correctly */

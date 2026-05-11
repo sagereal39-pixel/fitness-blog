@@ -334,7 +334,7 @@ header ul li a:hover {
 .content .main-content .post .post-image {
   width: 50%;
   height: 200px;
-  float: left;
+  float: none;
 }
 
 .content .main-content .post .post-preview {

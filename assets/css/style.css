@@ -252,22 +252,11 @@ header ul li a:hover {
   height: 200px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  object-fit: cover; /* This crops the image to fill the space without stretching */
-  flex-shrink: 0;
 }
 
 .post-slider .post-wrapper .post .post-info {
-  flex-grow: 1; /* Makes the info section expand to fill the card */
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Keeps text at the top */
-}
-
-.post-slider .post-wrapper .post .post-info i,
-.post-slider .post-wrapper .post .post-info span {
-  font-size: 0.9em;
-  margin-top: auto; /* Pushes the author/date to the bottom of the card */
+  height: auto; /* Allow text to breathe */
+  padding: 10px;
 }
 
 /* // Post Slider */
@@ -750,6 +739,30 @@ header ul li a:hover {
     background: white;
     border-radius: 5px;
     overflow: hidden; /* Clips any content that might leak out */
+  }
+
+  /* 2. Force all slider images to be the same size and crop correctly */
+  .post-slider .post-wrapper .post .slider-image {
+    width: 100%;
+    height: 200px; /* Fixed height for all images */
+    object-fit: cover; /* This crops the image to fill the space without stretching */
+    flex-shrink: 0; /* Prevents the image from getting squished by long text */
+  }
+
+  /* 3. Push the post info to fill the remaining space */
+  .post-slider .post-wrapper .post .post-info {
+    flex-grow: 1; /* Makes the info section expand to fill the card */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Keeps text at the top */
+  }
+
+  /* 4. Optional: Clean up the text icons if they look crowded on mobile */
+  .post-slider .post-wrapper .post .post-info i,
+  .post-slider .post-wrapper .post .post-info span {
+    font-size: 0.9em;
+    margin-top: auto; /* Pushes the author/date to the bottom of the card */
   }
 
   .post-slider .next,

@@ -290,7 +290,9 @@ header ul li a:hover {
   display: flex !important;
   flex-direction: row; /* Force side-by-side layout */
   width: 95%;
-  height: 270px; /* Restore standard height */
+  height: auto; /* Allow the box to grow with the text */
+  min-height: 270px; /* Maintains the look for short posts */
+  padding-bottom: 60px; /* Space for the absolute Read More button */
   margin: 20px auto;
   background: white;
   position: relative;
@@ -516,6 +518,33 @@ header ul li a:hover {
 }
 
 /* //Footer */
+
+/* MEDIA QUERIES 1028px */
+
+@media only screen and (max-width: 1028px) {
+  .content .main-content .post {
+    flex-direction: column !important; /* Forces text under image */
+    height: auto !important;
+  }
+
+  .content .main-content .post .post-image {
+    width: 100% !important;
+    height: 260px !important; /* Fixed height for the image at top */
+    float: none;
+  }
+
+  .content .main-content .post .post-preview {
+    width: 100% !important;
+    padding: 20px;
+    float: none;
+  }
+
+  .content .main-content .post .read-more {
+    left: 20px; /* Spread the button across the bottom */
+    right: 20px;
+    text-align: center;
+  }
+}
 
 /* MEDIA QUERIES 934px*/
 

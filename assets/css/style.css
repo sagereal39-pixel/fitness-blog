@@ -714,6 +714,27 @@ header ul li a:hover {
     left: 10px; /* Spread it across the bottom as requested */
     text-align: center;
   }
+
+  /* This forces the image and text to stack vertically */
+  .content .main-content .post {
+    flex-direction: column !important;
+    height: auto !important;
+    padding-bottom: 70px; /* Space for the Read More button */
+  }
+
+  /* Make image take full width at the top */
+  .content .main-content .post .post-image {
+    width: 100% !important;
+    height: 250px !important;
+    float: none;
+  }
+
+  /* Make text preview take full width underneath */
+  .content .main-content .post .post-preview {
+    width: 100% !important;
+    padding: 15px;
+    float: none;
+  }
 }
 
 /* Very Small Mobile (under 600px) */

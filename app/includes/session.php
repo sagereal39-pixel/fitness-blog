@@ -1,10 +1,10 @@
 <?php
-// Only set session parameters if the session hasn't started yet
 if (session_status() === PHP_SESSION_NONE) {
-  // These must happen BEFORE session_start()
-  if (!headers_sent()) {
+  // Only set these if we don't have an active session cookie yet
+  if (!headers_sent() && !isset($_COOKIE[session_name()])) {
     ini_set('session.cookie_path', '/');
     ini_set('session.cookie_samesite', 'Lax');
+    ini_set('session.cookie_httponly', '1');
   }
   session_start();
 }

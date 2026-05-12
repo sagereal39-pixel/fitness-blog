@@ -1,7 +1,10 @@
-<?php include(dirname(__DIR__) . "/path.php"); ?>
 <?php
+include(dirname(__DIR__) . "/path.php");
+// You MUST include session.php before adminOnly() runs
+include(ROOT_PATH . "/app/includes/session.php");
 include(ROOT_PATH . "/app/controllers/posts.php");
-adminOnly();
+
+adminOnly(); // Now this has access to your login data
 
 // Comment + like stats for dashboard
 $totalComments = 0;

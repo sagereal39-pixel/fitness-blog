@@ -772,6 +772,10 @@ header ul li a:hover {
     width: 95%;
   }
 
+  header .logo-text {
+    font-size: 1.2em;
+  }
+
   .content .main-content .post {
     height: auto; /* Stop fixed height stretching */
     display: block;
